@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>REGISTRAR VEHÍCULO</h3>
+    </div>
+    <div class="panel-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="licensePlate">PLACA</label>
+          <input type="text" class="form-control" name="licensePlate" required [(ngModel)]="vehicle.licensePlate" />
+        </div>
+        <div class="form-group">
+          <label for="type">TIPO</label>
+          <select class="form-control" name="type" required [(ngModel)]="vehiculo.tipoVehiculo.nombre">
+            <option value="CAR">CARRO</option>
+            <option value="BIKE">MOTO</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="displacement">CILINDRAJE</label>
+          <input type="number" class="form-control" name="displacement" required [(ngModel)]="vehicle.displacement" />
+        </div>
+        <button class="btn btn-success" type="submit">REGISTRAR</button>
+      </form>
+    </div>
+  </div>
+  <br>
+  <div class="alert alert-success" role="alert" [hidden]="submitted">
+    ¡REGISTRO EXITOSO!
+  </div>
+  <div class="alert alert-danger" role="alert" [hidden]="apiError">
+    {{ apiErrorMessage }}
+  </div>
