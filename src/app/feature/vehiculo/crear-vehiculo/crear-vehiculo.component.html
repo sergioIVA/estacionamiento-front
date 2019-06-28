@@ -6,7 +6,7 @@
       <form (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="licensePlate">PLACA</label>
-          <input type="text" class="form-control" name="licensePlate" required [(ngModel)]="vehicle.licensePlate" />
+          <input type="text" class="form-control" name="licensePlate" required [(ngModel)]="vehiculo.placa" />
         </div>
         <div class="form-group">
           <label for="type">TIPO</label>
@@ -17,14 +17,14 @@
         </div>
         <div class="form-group">
           <label for="displacement">CILINDRAJE</label>
-          <input type="number" class="form-control" name="displacement" required [(ngModel)]="vehicle.displacement" />
+          <input type="number" class="form-control" name="displacement" required [(ngModel)]="vehiculo.cilindraje" />
         </div>
         <button class="btn btn-success" type="submit">REGISTRAR</button>
       </form>
     </div>
   </div>
   <br>
-  <div class="alert alert-success" role="alert" [hidden]="submitted">
+  <div class="alert alert-success" role="alert" [hidden]="submit">
     ¡REGISTRO EXITOSO!
   </div>
   <div class="alert alert-danger" role="alert" [hidden]="apiError">
