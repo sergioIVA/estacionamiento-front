@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Historial</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-strped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha Ingreso</th>
+            <th>Fecha finalizacion</th>
+            <th>Placa</th>
+            <th>Tipo vehiculo</th>
+            <th>Puesto</th>
+            <th>VALOR PAGADO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reserva of reservas">
+            <td>{{ reserva.idReserva }}</td>
+            <td>{{ reserva.fechaIngreso | date:'medium' }}</td>
+            <td>{{ reserva.fechaRetiro | date:'medium' }}</td>
+            <td>{{ reserva.vehiculo.placa }}</td>
+            <td>{{ reserva.vehiculo.tipoVehiculo.nombre }}</td>
+            <td>{{ reserva.puesto.idPuesto }}</td>
+            <td>{{ reserva.valorTotal }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+

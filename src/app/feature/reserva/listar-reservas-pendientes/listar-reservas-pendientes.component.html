@@ -1,0 +1,58 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Reservas Activas</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-strped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha Ingreso</th>
+            <th>Placa</th>
+            <th>Tipo vehiculo</th>
+            <th>Puesto</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reserva of reservas">
+            <td>{{ reserva.idReserva }}</td>
+            <td>{{ reserva.fechaIngreso | date:'medium' }}</td>
+            <td>{{ reserva.vehiculo.placa }}</td>
+            <td>{{ reserva.vehiculo.tipoVehiculo.nombre }}</td>
+            <td>{{ reserva.puesto.idPuesto }}</td>
+            <td><input class="btn btn-danger" (click)="registrarSalidaReserva(reserva)" value="registra Salida" data-toggle="modal" data-target="#exampleModal"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<div class="alert alert-success" role="alert" [hidden]="submit">
+  ¡REGISTRO EXITOSO!
+</div>
+<div class="alert alert-danger" role="alert" [hidden]="apiError">
+  {{ apiErrorMessage }}
+</div>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">RESERVA FINALIZADA !</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       EL VALOR A COBRAR ES DE : {{ reservaFinalizada.valorTotal }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+

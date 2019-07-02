@@ -3,12 +3,12 @@
       <h3>REGISTRAR RESERVA</h3>
     </div>
     <div class="panel-body">
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="ReservarVehiculo()">
         <div class="form-group">
           <label for="type">VEHICULOS</label>
           <select class="form-control"  name="type" [(ngModel)]="vehiculoSelec" (change)="onSelectVehiculo($event)">
             <option *ngFor="let vehiculo of vehiculos" [ngValue]="vehiculo">
-            {{vehiculo.placa}}
+            {{vehiculo.placa}} - {{vehiculo.tipoVehiculo.nombre}}
             </option>
           </select>
         </div>
@@ -16,7 +16,7 @@
           <label for="type">PUESTOS LIBRES</label>
           <select class="form-control"  name="type" [(ngModel)]="puestoSelec" (change)="onSelectPuesto($event)">
             <option *ngFor="let puesto of puestos" [ngValue]="puesto" >
-            {{puesto.idPuesto}}
+            {{puesto.idPuesto}}-{{puesto.tipoPuestoVehiculo}}
             </option>
           </select>
         </div>

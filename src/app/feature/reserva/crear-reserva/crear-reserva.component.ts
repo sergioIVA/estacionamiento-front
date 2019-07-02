@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { VehiculoService } from '../../vehiculo/vehiculo.service';
 import { PuestoService } from '../../puesto/puesto.service';
 import { Puesto } from 'src/app/shared/models/puesto';
+import { ReservaService } from '../reserva.service';
+import { Reserva } from 'src/app/shared/models/reserva';
 
 @Component({
   selector: 'app-crear-reserva',
@@ -20,10 +22,14 @@ export class CrearReservaComponent implements OnInit {
    submit:boolean=true;
    apiError:boolean=true;
    apiErrorMessage:string='';
-   sergito:any;
+   reserva:Reserva;
+   
+  
 
   
-  constructor(private vehiculoService: VehiculoService,private puestoService:PuestoService) { }
+  constructor(private vehiculoService: VehiculoService,
+              private puestoService:PuestoService,
+              private reservaService:ReservaService) { }
 
   ngOnInit() {
     this.listarPuestos();
@@ -62,6 +68,30 @@ export class CrearReservaComponent implements OnInit {
  
   onSelectPuesto(e):void{
      console.log(this.puestoSelec);
+  }
+
+
+  ReservarVehiculo():void{
+      
+      let now = new Date();
+      this.reserva=new Reserva();
+      this.reserva.fechaIngreso=now;
+      this.reserva.puesto=this.puestoSelec;
+      this.reserva.vehiculo=this.vehiculoSelec;
+
+
+      this.reservaService.registrarReserva(this.reserva)
+                         .subscribe(
+                          reservaRegistrada=>{
+                            this.reserva=reservaRegistrada;
+                            this.submit=false;
+                          }, 
+                          error=> {
+                            this.apiError=false;
+                            this.apiErrorMessage=error.error.message;
+                          }  
+                         );
+                          
   }
 
 

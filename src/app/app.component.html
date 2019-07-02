@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="/">{{ title }}</a>
+    <a class="navbar-brand" href="/principal">{{ title }}</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -13,10 +13,13 @@
           <a class="nav-link" routerLink="/crearReserva" routerLinkActive="active">RESERVAS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="activeTickets" routerLinkActive="active">RESERVAS ACTIVAS</a>
+          <a class="nav-link" routerLink="/listarReservasPendientes" routerLinkActive="active">RESERVAS ACTIVAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/historialReserva" routerLinkActive="active">HISTORIAL DE RESERVAS</a>
         </li>
       </ul>
-    </div>
+    </div>  
   </nav>
 </header>
 <section class="container">
@@ -24,6 +27,6 @@
 </section>
 <footer class="footer font-small navbar-light bg-light">
   <div class="footer-copyright text-center py-3">
-    <a href="https://github.com/hikozzaru/Ceiba-Estacionamiento/tree/master/Front" target="_blank">Sergio Villamizar © 2019</a>
+    <a href="" target="_blank">Sergio Villamizar © 2019</a>
   </div>
 </footer>

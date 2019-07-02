@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListarVehiculoComponent } from './feature/vehiculo/listar-vehiculo/listar-vehiculo.component';
 import { CrearVehiculoComponent } from './feature/vehiculo/crear-vehiculo/crear-vehiculo.component';
 import { CrearReservaComponent } from './feature/reserva/crear-reserva/crear-reserva.component';
+import { ListarReservasPendientesComponent } from './feature/reserva/listar-reservas-pendientes/listar-reservas-pendientes.component';
+import { HistorialReservaComponent } from './feature/reserva/historial-reserva/historial-reserva.component';
+import { PrincipalComponent } from './feature/principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { CrearReservaComponent } from './feature/reserva/crear-reserva/crear-res
     ListarPuestosComponent,
     ListarVehiculoComponent,
     CrearVehiculoComponent,
-    CrearReservaComponent
+    CrearReservaComponent,
+    ListarReservasPendientesComponent,
+    HistorialReservaComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
