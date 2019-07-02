@@ -5,4 +5,10 @@ export class Vehiculo {
     placa:string;
     cilindraje:string;
     tipoVehiculo:TipoVehiculo;
+
+    constructor(){
+        this.tipoVehiculo=new TipoVehiculo();
+    }
+
+
 }

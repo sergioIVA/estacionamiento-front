@@ -8,13 +8,15 @@ import { ListarPuestosComponent } from './feature/puesto/listar-puestos/listar-p
 import { HttpClientModule } from '@angular/common/http';
 import { ListarVehiculoComponent } from './feature/vehiculo/listar-vehiculo/listar-vehiculo.component';
 import { CrearVehiculoComponent } from './feature/vehiculo/crear-vehiculo/crear-vehiculo.component';
+import { CrearReservaComponent } from './feature/reserva/crear-reserva/crear-reserva.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListarPuestosComponent,
     ListarVehiculoComponent,
-    CrearVehiculoComponent
+    CrearVehiculoComponent,
+    CrearReservaComponent
   ],
   imports: [
     BrowserModule,

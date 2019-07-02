@@ -22,7 +22,6 @@ export class CrearVehiculoComponent implements OnInit {
 
   nuevoVehiculo():void{
     this.submit=true;
-    this.vehiculo=new Vehiculo();
   }
 
   guardarVehiculo(){
