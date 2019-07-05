@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservaService } from '../reserva.service';
 import { Reserva } from 'src/app/shared/models/reserva';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-reservas-pendientes',
@@ -17,9 +19,23 @@ export class ListarReservasPendientesComponent implements OnInit {
 
   
 
-  constructor(private reservaService:ReservaService) { }
+  constructor(private reservaService:ReservaService,
+              private authService:AuthService,
+              private router:Router) { }
 
   ngOnInit() {
+
+    if (this.authService.token == null) {
+      this.authService.IniciarSession().subscribe(response => {
+        this.authService.guardarToken(response.access_token);
+      }, err => {
+        if (err.status == 400) {
+          alert('Error Login, Usuario o clave incorrectas!');
+        }
+      }
+      );
+    } 
+
     this.reservaFinalizada=new Reserva();
     this.listarReservaActivas();
   }
@@ -47,7 +63,11 @@ export class ListarReservasPendientesComponent implements OnInit {
                           );
       console.log(this.reservaFinalizada);                     
   }
-
+  
+  cargarListaReservarPendientes():void{
+     console.log("Se ejecuto la funcion cargarListaReservarPendientes");
+    this.router.navigate(['/listarReservasPendiente'])
+  }
   
 
 }

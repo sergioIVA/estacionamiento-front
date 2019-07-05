@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
+import { Puesto } from 'src/app/shared/models/puesto';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PuestoService {
 
-  private baseUrl:string='http://localhost:8082/puesto';
+  private baseUrl:string='http://localhost:8762/puesto';
+  
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private authService:AuthService) { }
 
-  getPuestos():Observable<any>{
-    return this.http.get(this.baseUrl+'/listar-puestos');
+  
+
+  getPuestos():Observable<Puesto[]>{
+    return this.http.get<Puesto[]>(this.baseUrl+'/listar-puestos',{headers:this.authService.agregarAuthorizationHeader()});
  }
 
- getPuestosLibres():Observable<any>{
-   return this.http.get(this.baseUrl+'/listado-puestos-libres');
+ getPuestosLibres():Observable<Puesto[]>{
+   return this.http.get<Puesto[]>(this.baseUrl+'/listado-puestos-libres',{headers:this.authService.agregarAuthorizationHeader()});
  }
 }

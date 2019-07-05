@@ -2,22 +2,23 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Vehiculo } from 'src/app/shared/models/vehiculo';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehiculoService {
 
-  private baseUrl: string = 'http://localhost:8082/vehiculo';
+  private baseUrl: string = 'http://localhost:8762/vehiculo';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private authService:AuthService) { }
 
-  getVehiculos():Observable<any>{
-      return this.http.get(this.baseUrl+'/listado-vehiculos');
+  getVehiculos():Observable<Vehiculo[]>{
+      return this.http.get<Vehiculo[]>(this.baseUrl+'/listado-vehiculos',{headers:this.authService.agregarAuthorizationHeader()});
   }
 
-  postVehiculo(vehiculo:Vehiculo):Observable<Object>{
-    return this.http.post(this.baseUrl,vehiculo);
+  postVehiculo(vehiculo:Vehiculo):Observable<Vehiculo>{
+    return this.http.post<Vehiculo>(this.baseUrl,vehiculo,{headers:this.authService.agregarAuthorizationHeader()});
   }
 
   

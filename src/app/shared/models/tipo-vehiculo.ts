@@ -1,4 +1,4 @@
 export class TipoVehiculo {
-    idTipoVehiculo:bigint;
+    idTipoVehiculo:number;
     nombre:string;
 }

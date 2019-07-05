@@ -3,7 +3,7 @@ import { Puesto } from './puesto';
 
 export class Reserva {
     
-    idReserva:bigint;
+    idReserva:number;
 	fechaIngreso:Date;
 	fechaRetiro:Date;
 	valorTotal:number;

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CrearReservaComponent } from './crear-reserva.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('CrearReservaComponent', () => {
   let component: CrearReservaComponent;
@@ -8,6 +11,7 @@ describe('CrearReservaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule,HttpClientTestingModule, FormsModule],
       declarations: [ CrearReservaComponent ]
     })
     .compileComponents();
@@ -19,7 +23,10 @@ describe('CrearReservaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  
+     it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+ 
 });

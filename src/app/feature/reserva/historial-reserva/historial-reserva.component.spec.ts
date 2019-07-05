@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HistorialReservaComponent } from './historial-reserva.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('HistorialReservaComponent', () => {
   let component: HistorialReservaComponent;
@@ -8,6 +11,7 @@ describe('HistorialReservaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule,HttpClientTestingModule, FormsModule],
       declarations: [ HistorialReservaComponent ]
     })
     .compileComponents();
@@ -19,7 +23,11 @@ describe('HistorialReservaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+   
+    it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  
+  
 });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Vehiculo } from 'src/app/shared/models/vehiculo';
 import { VehiculoService } from '../vehiculo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-vehiculo',
@@ -15,7 +16,7 @@ export class CrearVehiculoComponent implements OnInit {
   apiError:boolean=true;
   apiErrorMessage:string='';
 
-  constructor(private vehiculoService:VehiculoService) { }
+  constructor(private vehiculoService:VehiculoService,private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,7 +27,10 @@ export class CrearVehiculoComponent implements OnInit {
 
   guardarVehiculo(){
   this.vehiculoService.postVehiculo(this.vehiculo).subscribe(
-      data=>this.submit=false,
+      data=>{
+        this.submit=false
+        this.router.navigate(['/vehiculos'])
+      },
       error=> {
         this.apiError=false;
         this.apiErrorMessage=error.error.message;

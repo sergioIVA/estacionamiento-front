@@ -1,7 +1,7 @@
 import { TipoVehiculo } from './tipo-vehiculo';
 
 export class Vehiculo {
-    idVehiculo:bigint;
+    idVehiculo:number;
     placa:string;
     cilindraje:string;
     tipoVehiculo:TipoVehiculo;

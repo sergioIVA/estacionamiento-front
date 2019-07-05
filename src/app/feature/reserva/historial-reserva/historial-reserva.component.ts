@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReservaService } from '../reserva.service';
 import { Reserva } from 'src/app/shared/models/reserva';
+import { AuthService } from '../../auth/auth.service';
 
 
 @Component({
@@ -15,9 +16,20 @@ export class HistorialReservaComponent implements OnInit {
    apiErrorMessage:string='';
    reservas:Reserva[];
 
-  constructor(private reservaService:ReservaService) { }
+  constructor(private reservaService:ReservaService,private authService:AuthService) { }
 
   ngOnInit() {
+    if (this.authService.token == null) {
+      this.authService.IniciarSession().subscribe(response => {
+        this.authService.guardarToken(response.access_token);
+      }, err => {
+        if (err.status == 400) {
+          alert('Error Login, Usuario o clave incorrectas!');
+        }
+      }
+      );
+    } 
+
     this.listarHistorialReservas();
   }
 

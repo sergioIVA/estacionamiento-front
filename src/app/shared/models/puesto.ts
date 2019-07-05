@@ -1,5 +1,5 @@
 export class Puesto {
-    idPuesto:bigint;
+    idPuesto:number;
     tipoPuestoVehiculo:string;
     estado:boolean;
 }

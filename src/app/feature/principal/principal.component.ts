@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-principal',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit() {
+
+    if (this.authService.token == null) {
+      this.authService.IniciarSession().subscribe(response => {
+        this.authService.guardarToken(response.access_token);
+      }, err => {
+        if (err.status == 400) {
+          alert('Error Login, Usuario o clave incorrectas!');
+        }
+      }
+      );
+    } 
+
+
   }
 
 }
